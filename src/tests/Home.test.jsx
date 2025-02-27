@@ -1,55 +1,51 @@
 import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'; // Import MemoryRouter
+import { MemoryRouter } from 'react-router-dom';
 import Home from '../pages/Home.jsx';
 
 describe('Home Component', () => {
+    // test to see if logo renders
     it('should render the logo', () => {
         render(
             <MemoryRouter>
                 <Home />
             </MemoryRouter>
         );
-
-        // Check for the logo image
         const logo = screen.getByAltText('logo');
         expect(logo).toBeInTheDocument();
         expect(logo).toHaveAttribute('src', '/img/lrnr-logo.png');
     });
 
-    it('should render the correct tagline', () => {
+    // test to make sure the message is rendered properly
+    it('should render the correct message', () => {
         render(
             <MemoryRouter>
                 <Home />
             </MemoryRouter>
         );
-
-        // Check for the tagline
-        const tagline = screen.getByText(/Your guided path to programming enlightenment/i);
-        expect(tagline).toBeInTheDocument();
+        const message = screen.getByText(/Your guided path to programming enlightenment/i);
+        expect(message).toBeInTheDocument();
     });
 
+    // test to see if the button that says "BEGIN JOURNEY" renders
     it('should render the "BEGIN JOURNEY" button', () => {
         render(
             <MemoryRouter>
                 <Home />
             </MemoryRouter>
         );
-
-        // Check for the button
         const button = screen.getByText(/BEGIN JOURNEY/i);
         expect(button).toBeInTheDocument();
     });
 
-    it('should render the HomeCard component', () => {
+    // test to see if home card heading is rendered
+    it('should render the home card heading that says "Personalized Quizzes', () => {
         render(
             <MemoryRouter>
                 <Home />
             </MemoryRouter>
         );
-
-        // Check for the HomeCard component by verifying its content
         const homeCardHeading = screen.getByText(/Personalized Quizzes/i);
         expect(homeCardHeading).toBeInTheDocument();
     });
